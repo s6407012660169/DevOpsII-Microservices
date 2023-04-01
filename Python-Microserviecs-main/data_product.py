@@ -3,7 +3,7 @@ import os
 
 #File and path for database
 db_folder = os.path.join(os.path.dirname(__file__), "db_products.db")
-print(db_folder)
+
 # get products
 def get_products():
     data = []
@@ -37,13 +37,13 @@ def get_product(id):
     """
     val = (id,)
     cursor = conn.execute(sql, val)
-    rows = cursor.fetchone()
+    columns = cursor.fetchone()
     record = {
-        'id': rows[0],
-        'name': rows[1],
-        'category': rows[2],
-        'price': rows[3],
-        'instock': rows[4],
+        'id': columns[0],
+        'name': columns[1],
+        'category': columns[2],
+        'price': columns[3],
+        'instock': columns[4],
     }
     conn.close()
     return record
